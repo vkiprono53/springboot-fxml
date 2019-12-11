@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.collections.FXCollections?>
+<?import java.net.URL?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.kip.employee.controllers.EmployeeController"
+          prefHeight="400.0" prefWidth="600.0" alignment="CENTER" vgap="10" hgap="10">
+
+    <padding>
+        <Insets bottom="25" top="25" right="25" left="25"></Insets>
+    </padding>
+    <Label style="-fx-font: NORMAL 20 TAHOMA" text="Add Employee To The Database"
+           GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2">
+    </Label>
+
+    <Label text="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+    <TextField fx:id="firstname" GridPane.columnIndex="1" GridPane.rowIndex="1"></TextField>
+
+    <Label text="Last Name" GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
+    <TextField fx:id="lastname" GridPane.columnIndex="1" GridPane.rowIndex="2"></TextField>
+
+    <Label text="Username" GridPane.columnIndex="0" GridPane.rowIndex="3"></Label>
+    <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="3"></TextField>
+
+    <Label text="Password" GridPane.columnIndex="0" GridPane.rowIndex="4"></Label>
+    <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="4"></PasswordField>
+
+    <HBox spacing="10" alignment="BOTTOM_CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5">
+        <Button text="Add Employee" onAction="#save"></Button>
+    </HBox>
+
+
+    <padding>
+        <Insets bottom="25" top="25" right="25" left="25"></Insets>
+    </padding>
+    <Label style="-fx-font: NORMAL 20 TAHOMA" text="Registered Employees:"
+           GridPane.columnIndex="0" GridPane.rowIndex="6" GridPane.columnSpan="2">
+    </Label>
+
+    <TableView fx:id="tableView" GridPane.rowIndex="7" GridPane.columnIndex="1">
+
+        <columns>
+            <TableColumn text="FirstName">
+                <cellValueFactory>
+                    <PropertyValueFactory property="first_name"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="LastName">
+                <cellValueFactory>
+                    <PropertyValueFactory property="last_name"/>
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="UserName">
+                <cellValueFactory>
+                    <PropertyValueFactory property="username"/>
+                </cellValueFactory>
+            </TableColumn>
+
+        </columns>
+        <items>
+            <FXCollections fx:factory="observableArrayList"/>
+        </items>
+    </TableView>
+
+    <HBox spacing="10" alignment="BASELINE_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="8">
+        <Button text="View Employee" onAction="#getEmployees"/>
+    </HBox>
+<stylesheets>
+    <URL value="@style.css"/>
+</stylesheets>
+
+</GridPane>
